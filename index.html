@@ -307,6 +307,54 @@ html.motion-on .xline:not(.is-in) i{opacity:0}
 #about .stat.is-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.08) 50%,rgba(0,0,0,.55))}
 @media (max-width:1023px){#about .stats{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);margin-inline:calc(-1*var(--gutter));padding-inline:var(--gutter);scrollbar-width:none}#about .stats::-webkit-scrollbar{display:none}#about .stat{flex:0 0 min(62vw,260px);scroll-snap-align:start}}
 
+/* ===== v16: Now at LINKVIVA (editorial index) ===== */
+.now{padding-block:clamp(110px,12vw,180px) clamp(96px,10vw,150px)}
+.now-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(36px,5vw,72px)}
+.now-title{font-size:clamp(40px,6.4vw,104px);line-height:.92}
+.now-clock{display:inline-flex;align-items:center;gap:10px;font:400 14px/1 var(--ff-text);color:var(--muted);white-space:nowrap}
+.now-clock span{font:700 14px/1 var(--ff-text);color:var(--ink);font-variant-numeric:tabular-nums}
+.now-clock i{width:8px;height:8px;border-radius:50%;background:var(--ink);animation:blink 2.4s var(--ease) infinite}
+.now-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,110px);align-items:start}
+.now-list{list-style:none;border-top:1px solid var(--hair)}
+.now-item{position:relative;border-bottom:1px solid var(--hair)}
+.now-row{width:100%;display:grid;grid-template-columns:56px 140px 1fr 28px;align-items:baseline;gap:16px;padding:clamp(22px,2.4vw,34px) 0;text-align:left}
+.now-num{font:500 13px/1 var(--ff-statement);color:var(--muted);font-variant-numeric:tabular-nums}
+.now-kicker{font:400 14px/1.2 var(--ff-text);color:var(--muted)}
+.now-name{font-family:var(--ff-display);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.6vw,44px);line-height:.98;color:#c4c4c2;transition:color .5s var(--ease),transform .7s var(--ease)}
+.now-row:hover .now-name{color:#8f908e;transform:translateX(10px)}
+.now-item.is-active .now-name{color:var(--ink);transform:none}
+.now-plus{position:relative;width:20px;height:20px;align-self:center;justify-self:end}
+.now-plus::before,.now-plus::after{content:"";position:absolute;left:50%;top:50%;width:16px;height:1.5px;background:var(--ink);translate:-50% -50%;transition:transform .5s var(--ease)}
+.now-plus::after{transform:rotate(90deg)}
+.now-item.is-active .now-plus::after{transform:rotate(0deg)}
+.now-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.now-item.is-active .now-panel{grid-template-rows:1fr}
+.now-panel > div{overflow:hidden}
+.now-body{display:grid;gap:18px;justify-items:start;padding:0 0 clamp(26px,2.6vw,36px) 228px;max-width:calc(228px + 46ch);opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease) .1s,transform .6s var(--ease) .1s}
+.now-item.is-active .now-body{opacity:1;transform:none}
+.now-body p{font:400 16px/1.55 var(--ff-text);color:var(--muted)}
+.now-body .tlink svg{width:14px;height:14px}
+.now-bar{position:absolute;left:0;right:0;bottom:-1px;height:1.5px;overflow:hidden}
+.now-bar b{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%}
+.now-item.is-active .now-bar b{animation:scfill 7s linear forwards}
+#spot.is-paused .now-item.is-active .now-bar b{animation-play-state:paused}
+.now-media{position:sticky;top:calc(var(--hdr) + 32px);padding:0 0 0 28px}
+.now-frame{position:relative;aspect-ratio:4/5;border-radius:var(--r-card);overflow:hidden;background:var(--grey-4)}
+.now-frame > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(100% 0 0 0);transform:scale(1.14);transition:clip-path 1s var(--ease),transform 1.6s var(--ease)}
+.now-frame > img.is-on{clip-path:inset(0 0 0 0);transform:scale(1);z-index:2}
+.now-frame > img.is-out{clip-path:inset(0 0 0 0);transform:scale(1);z-index:1}
+.now-chip{position:absolute;left:16px;bottom:16px;z-index:3;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border-radius:var(--r-sm);padding:8px 12px;font:700 12px/1.25 var(--ff-text);box-shadow:0 2px 10px rgba(0,0,0,.14);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.now-chip.is-on{opacity:1;transform:none;transition-delay:.45s}
+.now-badge{position:absolute;left:-28px;top:-28px;width:clamp(92px,8vw,124px);z-index:4;animation:spin 18s linear infinite}
+.now-badge > circle:first-of-type{fill:var(--ink)}
+.now-badge text{fill:#fff;font:700 10.5px var(--ff-text);letter-spacing:.18em}
+.now-badge .dot{fill:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+.now-count{position:absolute;right:-6px;bottom:-34px;z-index:4;font-family:var(--ff-display);font-weight:800;font-size:clamp(44px,5vw,84px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:8px}
+.now-count em{font:500 14px/1 var(--ff-statement);font-style:normal;color:var(--muted)}
+@media (max-width:1023px){.now-grid{grid-template-columns:1fr}.now-media{position:relative;top:auto;order:-1;max-width:520px;padding:28px 0 0 28px}.now-row{grid-template-columns:44px 1fr 24px}.now-kicker{grid-column:2;grid-row:1}.now-name{grid-column:2;grid-row:2}.now-plus{grid-column:3;grid-row:1 / span 2}.now-body{padding-left:60px;max-width:none}}
+@media (max-width:767px){.now-head{flex-direction:column;align-items:flex-start}.now-count{right:0;bottom:-30px}.now-badge{left:-12px;top:-12px}.now-media{padding:20px 0 0 16px;margin-bottom:24px}.now-body{padding-left:0}}
+
 /* ---- Hero (showreel) ---- */
 .hero{position:relative;background:var(--white)}
 .hero-stage{position:relative;height:min(100svh,1000px);min-height:600px;display:grid;place-items:center;overflow:clip}
@@ -376,25 +424,6 @@ html.motion-on .xline:not(.is-in) i{opacity:0}
 }
 
 /* ---- Spotlight ---- */
-.spot{background:var(--paper);border-radius:var(--r-card);padding:clamp(24px,5vw,64px)}
-.spot-in{width:min(920px,100%);margin:auto;display:grid;grid-template-columns:1fr 290px;gap:clamp(24px,5vw,56px);align-items:center}
-.spot-rows{border-bottom:1px solid var(--hair);min-width:0}
-.spot-row{border-top:1px solid var(--hair)}
-.spot-label{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;font:700 14px/1 var(--ff-text);color:var(--muted);transition:color .3s var(--ease)}
-.spot-row.is-active .spot-label{color:var(--ink)}
-.spot-label svg{width:16px;height:16px;transition:transform .5s var(--ease)}
-.spot-row.is-active .spot-label svg{transform:rotate(180deg)}
-.spot-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s var(--ease),opacity .5s var(--ease)}
-.spot-row.is-active .spot-panel{grid-template-rows:1fr;opacity:1}
-.spot-panel > div{overflow:hidden}
-.spot-body{display:grid;gap:16px;padding:4px 0 28px}
-.spot-body .btn{justify-self:start}
-.spot-media{position:relative;width:290px;max-width:100%;aspect-ratio:9/16;border-radius:var(--r-card);overflow:hidden;background:var(--grey-4);justify-self:end}
-.spot-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s var(--ease)}
-.spot-media img.is-on{opacity:1}
-.spot-media .ui-chip{opacity:0;transition:opacity .25s var(--ease)}
-.spot-media .ui-chip.is-on{opacity:1}
-@media (max-width:767px){.spot-in{grid-template-columns:1fr}.spot-media{justify-self:center;width:min(290px,70vw)}}
 
 /* ---- Sectors (black room, strip gallery) ---- */
 .room-dark{background:var(--ink);color:var(--white)}
@@ -914,44 +943,48 @@ html.cur-down .cur-ring{width:28px;height:28px;margin:-14px 0 0 -14px}
   </div>
 </section>
 
-<!-- ===== 4. SPOTLIGHT ===== -->
-<section data-theme="light" class="wrap" id="now" aria-labelledby="now-h" style="padding-bottom:clamp(64px,8vw,112px)">
-  <h2 class="sr-only" id="now-h">Now at LINKVIVA</h2>
-  <div class="spot rv" id="spot">
-    <div class="spot-in">
-      <div class="spot-rows">
-        <div class="spot-row is-active" data-i="0">
-          <button class="spot-label" aria-expanded="true" aria-controls="spot-p0" id="spot-b0">Awards <svg><use href="#i-chev-d"/></svg></button>
-          <div class="spot-panel" id="spot-p0" role="region" aria-labelledby="spot-b0"><div><div class="spot-body">
-            <h3 class="display t-card">Best event marketing campaign of the year</h3>
-            <p class="b1 muted">Middle East Event Awards 2026, for Liwa International Festival 2026 with the Department of Culture and Tourism Abu Dhabi.</p>
-            <a class="btn btn-secondary" href="https://www.linkviva.com/liwa-village">See the project <svg><use href="#i-arrow"/></svg></a>
-          </div></div></div>
+<!-- ===== 4. SPOTLIGHT (Now at LINKVIVA, editorial index) ===== -->
+<section data-theme="light" class="now" id="now" aria-labelledby="now-h">
+  <div class="wrap-wide">
+    <div class="now-head">
+      <div><div class="eyebrow">Now at LINKVIVA</div><h2 class="display now-title" id="now-h">The latest from<br>the studio</h2></div>
+      <div class="now-clock" aria-label="Local time in Dubai"><i></i>Dubai <span id="nowTime">--:--</span> GST</div>
+    </div>
+    <div class="now-grid" id="spot">
+      <ol class="now-list">
+        <li class="now-item is-active" data-i="0">
+          <button class="now-row" type="button" aria-expanded="true" aria-controls="now-p0" id="now-b0">
+            <span class="now-num">01</span><span class="now-kicker">Awards</span><span class="now-name">Best event marketing campaign of the year</span><span class="now-plus" aria-hidden="true"></span>
+          </button>
+          <div class="now-panel" id="now-p0" role="region" aria-labelledby="now-b0"><div><div class="now-body"><p>Middle East Event Awards 2026, for Liwa International Festival 2026 with the Department of Culture and Tourism Abu Dhabi.</p><a class="tlink" href="https://www.linkviva.com/liwa-village">See the project <svg><use href="#i-arrow"/></svg></a></div></div></div>
+          <i class="now-bar" aria-hidden="true"><b></b></i>
+        </li>
+        <li class="now-item" data-i="1">
+          <button class="now-row" type="button" aria-expanded="false" aria-controls="now-p1" id="now-b1">
+            <span class="now-num">02</span><span class="now-kicker">Latest launch</span><span class="now-name">Kayan Wellness Festival returns in 2027</span><span class="now-plus" aria-hidden="true"></span>
+          </button>
+          <div class="now-panel" id="now-p1" role="region" aria-labelledby="now-b1"><div><div class="now-body"><p>The region’s first-of-its-kind wellness festival, a LINKVIVA IP created with DCT Abu Dhabi, is back for a new edition. Dates to be announced.</p><a class="tlink" href="https://kayanwellnessfestival.com" target="_blank" rel="noopener">Explore Kayan <svg><use href="#i-arrow"/></svg></a></div></div></div>
+          <i class="now-bar" aria-hidden="true"><b></b></i>
+        </li>
+        <li class="now-item" data-i="2">
+          <button class="now-row" type="button" aria-expanded="false" aria-controls="now-p2" id="now-b2">
+            <span class="now-num">03</span><span class="now-kicker">Sustainability</span><span class="now-name">100% solar at Kayan. 90% at Liwa.</span><span class="now-plus" aria-hidden="true"></span>
+          </button>
+          <div class="now-panel" id="now-p2" role="region" aria-labelledby="now-b2"><div><div class="now-body"><p>Modular builds, local sourcing and certified waste programmes on every site, aligned to the UN SDGs and the UAE Net Zero 2050 vision.</p><a class="tlink" href="https://www.linkviva.com/sustainability-linkviva">Our commitment <svg><use href="#i-arrow"/></svg></a></div></div></div>
+          <i class="now-bar" aria-hidden="true"><b></b></i>
+        </li>
+      </ol>
+      <div class="now-media" aria-hidden="true">
+        <div class="now-frame">
+          <img class="is-on" src="img/liwa-fireworks-aerial.jpg" alt="" loading="lazy">
+          <img src="img/kayan-sunset.jpg" alt="" loading="lazy">
+          <img src="img/kilo-row.jpg" alt="" loading="lazy">
+          <div class="now-chip is-on" data-i="0"><img src="img/badge-mee-2026.png" alt="" width="24" height="24"> Middle East Event Awards 2026</div>
+          <div class="now-chip" data-i="1">Returns in 2027</div>
+          <div class="now-chip" data-i="2">Solar-powered site</div>
         </div>
-        <div class="spot-row" data-i="1">
-          <button class="spot-label" aria-expanded="false" aria-controls="spot-p1" id="spot-b1">Latest launch <svg><use href="#i-chev-d"/></svg></button>
-          <div class="spot-panel" id="spot-p1" role="region" aria-labelledby="spot-b1"><div><div class="spot-body">
-            <h3 class="display t-card">Kayan Wellness Festival returns in 2027</h3>
-            <p class="b1 muted">The region's first-of-its-kind wellness festival, a LINKVIVA IP created with DCT Abu Dhabi, is back for a new edition. Dates to be announced.</p>
-            <a class="btn btn-secondary" href="https://kayanwellnessfestival.com" target="_blank" rel="noopener">Explore Kayan <svg><use href="#i-arrow"/></svg></a>
-          </div></div></div>
-        </div>
-        <div class="spot-row" data-i="2">
-          <button class="spot-label" aria-expanded="false" aria-controls="spot-p2" id="spot-b2">Sustainability <svg><use href="#i-chev-d"/></svg></button>
-          <div class="spot-panel" id="spot-p2" role="region" aria-labelledby="spot-b2"><div><div class="spot-body">
-            <h3 class="display t-card">100% solar at Kayan. 90% at Liwa.</h3>
-            <p class="b1 muted">Modular builds, local sourcing and certified waste programmes on every site, aligned to the UN SDGs and the UAE Net Zero 2050 vision.</p>
-            <a class="btn btn-secondary" href="https://www.linkviva.com/sustainability-linkviva">Our commitment <svg><use href="#i-arrow"/></svg></a>
-          </div></div></div>
-        </div>
-      </div>
-      <div class="spot-media" aria-hidden="true">
-        <img class="is-on" src="img/liwa-fireworks-aerial.jpg" alt="" loading="lazy" width="720" height="1280">
-        <img src="img/kayan-sunset.jpg" alt="" loading="lazy" width="720" height="1280">
-        <img src="img/kilo-row.jpg" alt="KILO solar battery units powering Kayan Wellness Festival" loading="lazy" width="720" height="1280">
-        <div class="ui-chip is-on" data-i="0"><img src="img/badge-mee-2026.png" alt="" width="28" height="28"> Middle East Event Awards 2026</div>
-        <div class="ui-chip" data-i="1">Returns in 2027</div>
-        <div class="ui-chip" data-i="2">Solar-powered site</div>
+        <svg class="now-badge" viewBox="0 0 120 120"><defs><path id="nowCircle" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><circle cx="60" cy="60" r="60"/><text><textPath href="#nowCircle">NOW AT LINKVIVA · NOW AT LINKVIVA · </textPath></text><circle class="dot" cx="60" cy="60" r="5"/></svg>
+        <div class="now-count"><span id="nowIdx">01</span><em>/ 03</em></div>
       </div>
     </div>
   </div>
@@ -1341,14 +1374,19 @@ const setOver=()=>{ const lim=(hasGsap&&!RM)?innerHeight*0.12:40; hdrEl.classLis
 setOver(); addEventListener('scroll',setOver,{passive:true}); addEventListener('resize',setOver); burger.addEventListener('click',()=>setTimeout(setOver,0));
 
 /* ---------- Spotlight accordion ---------- */
-const spot=$('#spot'), spotRows=$$('.spot-row',spot), spotImgs=$$('.spot-media img',spot), spotChips=$$('.spot-media .ui-chip',spot);
-let spotI=0, spotTimer=null, spotUser=false;
-function setSpot(i){ spotI=i; spotRows.forEach((r,k)=>{ const on=k===i; r.classList.toggle('is-active',on); $('.spot-label',r).setAttribute('aria-expanded',String(on)); }); spotImgs.forEach((im,k)=>im.classList.toggle('is-on',k===i)); spotChips.forEach((c,k)=>c.classList.toggle('is-on',k===i)); }
-function spotAuto(){ if(RM||spotUser) return; clearInterval(spotTimer); spotTimer=setInterval(()=>setSpot((spotI+1)%spotRows.length),7000); }
-spotRows.forEach((r,i)=>$('.spot-label',r).addEventListener('click',()=>{ spotUser=true; clearInterval(spotTimer); setSpot(i); }));
-spot.addEventListener('mouseenter',()=>clearInterval(spotTimer)); spot.addEventListener('mouseleave',spotAuto);
-spot.addEventListener('focusin',()=>clearInterval(spotTimer)); spot.addEventListener('focusout',e=>{ if(!spot.contains(e.relatedTarget)) spotAuto(); });
-spotAuto();
+const spot=$('#spot'), nowItems=$$('.now-item',spot), nowImgs=$$('.now-frame > img',spot), nowChips=$$('.now-chip',spot), nowIdx=$('#nowIdx');
+let spotI=0, spotUser=false;
+function setSpot(i){ if(i===spotI && nowItems[i].classList.contains('is-active')) return; const prev=spotI; spotI=i;
+  nowItems.forEach((r,k)=>{ const on=k===i; r.classList.toggle('is-active',on); $('.now-row',r).setAttribute('aria-expanded',String(on)); });
+  nowImgs.forEach(im=>im.classList.remove('is-out')); nowImgs[prev].classList.add('is-out'); nowImgs[prev].classList.remove('is-on');
+  void nowImgs[i].offsetWidth; nowImgs[i].classList.add('is-on'); setTimeout(()=>nowImgs[prev].classList.remove('is-out'),1100);
+  nowChips.forEach((c,k)=>c.classList.toggle('is-on',k===i)); nowIdx.textContent='0'+(i+1); }
+nowItems.forEach((r,i)=>{ $('.now-row',r).addEventListener('click',()=>{ spotUser=true; spot.classList.add('is-paused'); setSpot(i); });
+  $('.now-bar b',r).addEventListener('animationend',()=>{ if(i===spotI && !spotUser && !RM) setSpot((i+1)%nowItems.length); }); });
+spot.addEventListener('mouseenter',()=>spot.classList.add('is-paused')); spot.addEventListener('mouseleave',()=>{ if(!spotUser) spot.classList.remove('is-paused'); });
+if(RM) spot.classList.add('is-paused');
+new IntersectionObserver(es=>es.forEach(e=>{ if(!spotUser) spot.classList.toggle('is-paused',!e.isIntersecting||RM); }),{threshold:.3}).observe(spot);
+const nowClock=$('#nowTime'); const tick=()=>{ try{ nowClock.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Dubai',hour:'2-digit',minute:'2-digit'}).format(new Date()); }catch(e){} }; tick(); setInterval(tick,30000);
 
 /* ---------- Sectors strip gallery ---------- */
 const stripsEl=$('#strips'), strips=$$('.strip',stripsEl), secData=JSON.parse($('#sectorData').textContent), secPanel=$('#secpanel');
@@ -1538,7 +1576,10 @@ if(hasGsap && !RM){
     if(withScale){ const imgs=els.map(e=>e.querySelector('img')).filter(Boolean); if(imgs.length) gsap.from(imgs,{scale:1.14,duration:1.5,ease:'power3.out',stagger,scrollTrigger:{trigger:trigger||els[0],start:'top 85%',once:true}}); }
   };
   clipIn('.tile','.vg',.07,false);
-  clipIn('.spot-media','#spot',0,false);
+  clipIn('.now-frame','#spot',0,false);
+  gsap.from('.now-item',{y:30,opacity:0,duration:.9,ease:'power3.out',stagger:.08,scrollTrigger:{trigger:'#spot',start:'top 80%',once:true}});
+  gsap.from(['.now-badge','.now-count'],{scale:.6,opacity:0,duration:1,ease:'back.out(1.6)',stagger:.12,scrollTrigger:{trigger:'#spot',start:'top 70%',once:true}});
+  gsap.fromTo('.now-frame > img',{yPercent:-4},{yPercent:4,ease:'none',scrollTrigger:{trigger:'#spot',start:'top bottom',end:'bottom top',scrub:true}});
   clipIn('.strip','#strips',.06,false);
   clipIn('.slide','#work .carousel',.07,true);
   clipIn('.icard-img','.cards3',.1,true);
@@ -1550,7 +1591,6 @@ if(hasGsap && !RM){
   rise('.vg-item .vg-body, .vg-item .icon-btn','.vg',.05);
   rise('.stat','.stats',.08);
   rise('.records','.records',0);
-  rise('.spot-rows','#spot',0);
   rise('.icard-meta, .icard h3, .icard-foot','.cards3',.04);
   rise('.pillar','.pillars',.08);
   rise('.form-card','#start',0);
